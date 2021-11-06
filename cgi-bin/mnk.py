@@ -28,22 +28,3 @@ for i in range(0, nint):
 df = pd.DataFrame(xlist, ylist)
 fig = px.scatter(df, trendline="ols")
 fig.show()
-
-'''
-html_str = """Content-type: text/html\n
-        <!DOCTYPE HTML>
-        <html>
-                <head>
-                        <meta charset="utf-8">
-                        <title>МНК</title>
-                </head>
-                <body>
-                	
-                </body>
-        </html>"""
-
-#<form action="graph.py">
-#                <input type="submit" value="Далее">
-
-print(html_str)
-'''
