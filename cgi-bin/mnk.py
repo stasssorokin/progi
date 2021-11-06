@@ -4,6 +4,8 @@ import cgi
 import html
 import matplotlib.pyplot as plt
 import numpy as np
+import plotly.express as px
+import pandas as pd
 
 form = cgi.FieldStorage()
 n = form.getfirst("n", "number")
@@ -23,12 +25,11 @@ for i in range(0, nint):
 	yfloat=float(y.replace(',', '.'))
 	ylist.append(yfloat)
 
-plt.scatter(xlist, ylist)
-p = np.polyfit(xlist, ylist, 1)
-f = np.poly1d(p)
-plt.plot(xlist, f(xlist))
-plt.savefig("cgi-bin/mnk_plot.png")
+df = pd.DataFrame(xlist, ylist)
+fig = px.scatter(df, trendline="ols")
+fig.show()
 
+'''
 html_str = """Content-type: text/html\n
         <!DOCTYPE HTML>
         <html>
@@ -37,9 +38,12 @@ html_str = """Content-type: text/html\n
                         <title>МНК</title>
                 </head>
                 <body>
-                <form action="graph.py">
-                <input type="submit" value="Далее">
+                	
                 </body>
         </html>"""
 
+#<form action="graph.py">
+#                <input type="submit" value="Далее">
+
 print(html_str)
+'''
