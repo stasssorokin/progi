@@ -2,8 +2,6 @@
 
 import cgi
 import html
-import matplotlib.pyplot as plt
-import numpy as np
 import plotly.express as px
 import pandas as pd
 
@@ -24,7 +22,6 @@ for i in range(0, nint):
 	y = html.escape(y)
 	yfloat=float(y.replace(',', '.'))
 	ylist.append(yfloat)
-
 df = pd.DataFrame(xlist, ylist)
 fig = px.scatter(df, trendline="ols")
 fig.show()
